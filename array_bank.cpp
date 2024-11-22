@@ -10,7 +10,7 @@ void deposit(BankAccount &account, int amount)
     cout << "Deposit thread: Waiting to acquire lock...\n";
     while (!mutexLock)
     {
-        // Busy wait until the lock is available
+        
     }
     mutexLock = false;
     cout << "Deposit thread: Lock acquired.\n";
@@ -24,7 +24,7 @@ void withdraw(BankAccount &account, int amount)
     cout << "Withdraw thread: Waiting to acquire lock...\n";
     while (!mutexLock)
     {
-        // Busy wait until the lock is available
+        
     }
     mutexLock = false;
     cout << "Withdraw thread: Lock acquired.\n";

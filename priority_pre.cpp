@@ -1,11 +1,11 @@
 #include <iostream>
 #include <vector>
-#include <algorithm> // For std::sort
+#include <algorithm>
 using namespace std;
 
 struct Process {
     int pid, arrival_time, burst_time, waiting_time, completion_time, turn_around__time, priority;
-    int remaining_bt; // Remaining burst time for preemptive scheduling
+    int remaining_bt; 
 };
 
 void calculateTimes(Process p[], int n) {
@@ -13,13 +13,11 @@ void calculateTimes(Process p[], int n) {
     int completedCount = 0;
     vector<int> remaining_bt(n);
 
-    // Initialize remaining burst time
     for (int i = 0; i < n; i++) {
         remaining_bt[i] = p[i].burst_time;
     }
 
     while (completedCount < n) {
-        // Find the highest priority process that is ready to execute
         int idx = -1;
         for (int i = 0; i < n; i++) {
             if (p[i].arrival_time <= currentTime && remaining_bt[i] > 0) {
@@ -30,17 +28,15 @@ void calculateTimes(Process p[], int n) {
         }
 
         if (idx == -1) {
-            // No process is ready to execute, increment time
             currentTime++;
         } else {
             remaining_bt[idx]--;
             currentTime++;
 
-            // If the process is completed
             if (remaining_bt[idx] == 0) {
-                p[idx].completion_time = currentTime; // End time
-                p[idx].turn_around__time = p[idx].completion_time - p[idx].arrival_time; // Turnaround time
-                p[idx].waiting_time = p[idx].turn_around__time - p[idx].burst_time; // Waiting time
+                p[idx].completion_time = currentTime; 
+                p[idx].turn_around__time = p[idx].completion_time - p[idx].arrival_time; 
+                p[idx].waiting_time = p[idx].turn_around__time - p[idx].burst_time; 
                 completedCount++;
             }
         }

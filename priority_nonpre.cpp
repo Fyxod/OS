@@ -12,27 +12,26 @@ void calculateTimes(Process p[], int n) {
     for (int completedCount = 0; completedCount < n; completedCount++) {
         int idx = -1;
         for (int i = 0; i < n; i++) {
-            // Find the highest priority process that has arrived and is not yet completed
+
             if (!completed[i] && p[i].arrival_time <= currentTime) {
                 if (idx == -1 || p[i].priority > p[idx].priority) {
                     idx = i;
                 }
             }
         }
-        // If no process is ready, move the time forward
+        
         if (idx == -1) {
             currentTime++;
             completedCount--;
             continue;
         }
 
-        // Process execution
         currentTime += p[idx].burst_time;
-        p[idx].completion_time = currentTime;              // End time
-        p[idx].turn_around_time = p[idx].completion_time - p[idx].arrival_time;   // Turnaround time
-        p[idx].waiting_time = p[idx].turn_around_time - p[idx].burst_time;   // Waiting time
+        p[idx].completion_time = currentTime;
+        p[idx].turn_around_time = p[idx].completion_time - p[idx].arrival_time;   
+        p[idx].waiting_time = p[idx].turn_around_time - p[idx].burst_time;   
 
-        completed[idx] = true;  // Mark as completed
+        completed[idx] = true;  
     }
 }
 

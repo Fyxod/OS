@@ -61,7 +61,7 @@ bool worstFit(vector<int> &memory, int blockSize)
 }
 int main()
 {
-    vector<int> memory = {100, 500, 200, 300, 600}; // Initial memory chunks
+    vector<int> memory = {100, 500, 200, 300, 600};
     int choice, blockSize;
     cout << "Initial Memory State: ";
     displayMemory(memory);
