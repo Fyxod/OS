@@ -45,21 +45,15 @@ void claculateWaitingTime(Process processes[], int n) {
 }
 
 void printTable(Process processes[], int n) {
-  cout << "--------------------------------------------------------------------"
-          "----------------------\n";
-  cout << "| Process | Arrival Time | Burst Time | Completion Time | "
-          "Turnaround Time | Waiting Time |\n";
-  cout << "--------------------------------------------------------------------"
-          "----------------------\n";
+  cout << "| Process | Arrival | Burst | Completion| "
+          "TAT | Waiting Time |\n";
   for (int i = 0; i < n; i++) {
-    cout << "|    " << processes[i].id << "    |      "
-         << processes[i].arrivalTime << "      |     " << processes[i].burstTime
-         << "     |        " << processes[i].completionTime
-         << "        |        " << processes[i].turnaroundTime
-         << "         |      " << processes[i].waitingTime << "      |\n";
+    cout << "\t" << processes[i].id << "\t"
+         << processes[i].arrivalTime << "\t" << processes[i].burstTime
+         << "\t   " << processes[i].completionTime
+         << "   \t    "<< processes[i].turnaroundTime
+         << "   \t  " << processes[i].waitingTime << "\t\t\n";
   }
-  cout << "--------------------------------------------------------------------"
-          "----------------------\n";
 }
 int main() {
   int n, quantum;
