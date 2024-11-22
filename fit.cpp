@@ -5,7 +5,7 @@ void displayMemory(const vector<int> &memory)
 {
     cout << "Current Memory State: ";
     for (int i = 0; i < memory.size(); ++i)
-        cout << "[" << memory[i] << "] ";
+        cout << "  " << memory[i] << "  ";
     cout << endl;
 }
 bool firstFit(vector<int> &memory, int blockSize)
